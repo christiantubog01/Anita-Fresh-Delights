@@ -1,0 +1,142 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+  <h1 class="product-title">Product Details</h1>
+
+<div class="product-card">
+    <div class="product-image">
+        {% if product.image %}
+            <img src="{{ asset('products/' ~ product.image) }}" alt="{{ product.ProductName }}">
+        {% else %}
+            <span class="no-image">No image available</span>
+        {% endif %}
+    </div>
+
+    <div class="product-info">
+        <h2>{{ product.ProductName }}</h2>
+        <p class="description">{{ product.Description }}</p>
+        <p class="price">₱{{ product.Price }}</p>
+
+        <div class="product-meta">
+            <span><strong>ID:</strong> {{ product.id }}</span>
+            <br>
+            <span><strong>Category:</strong> {{ product.category ? product.category.name : 'No category' }}</span>
+        </div>
+
+        <div class="product-actions">
+            <a href="{{ path('app_products_index') }}" class="btn btn-secondary">⬅ Back to list</a>
+            <a href="{{ path('app_products_edit', {'id': product.id}) }}" class="btn btn-primary">✏ Edit</a>
+            {{ include('products/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+
+
+<!-- CSS -->
+<style>
+.product-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: "Gill Sans MT", sans-serif;
+}
+
+.product-card {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: auto;
+    background: #fffbea;
+    border: 2px solid #f0c040;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-image {
+    flex: 1 1 300px;
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.product-info {
+    flex: 2 1 400px;
+    padding: 25px;
+}
+
+.product-info h2 {
+    margin-top: 0;
+    font-size: 28px;
+    color: #333;
+}
+
+.description {
+    font-size: 16px;
+    margin: 15px 0;
+    color: #555;
+}
+
+.price {
+    font-size: 22px;
+    color: #e63946;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.product-meta {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.product-actions {
+    margin-top: 20px;
+}
+
+.product-actions .btn {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-primary {
+    background: #f0c040;
+    color: #333;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #e0a800;
+}
+
+.btn-secondary {
+    background: #444;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #222;
+}
+</style>
+{% endblock %}
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    <style>
+        p {
+            color: black;
+        }
+    .contact-section {
+        background: #f9f9f9;
+        border-radius: 8px;
+        padding: 32px 24px;
+        max-width: 700px;
+        margin: 40px auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        text-align: center;
+    }
+    .contact-section h2 {
+        color: #2c3e50;
+        margin-bottom: 16px;
+    }
+    .contact-section p {
+        color: #444;
+        font-size: 1.15em;
+        line-height: 1.7;
+    }
+    .contact-section .contact-info {
+        margin-top: 20px;
+    }
+    .contact-section .contact-info p {
+        margin: 8px 0;
+    }
+    </style>
+
+<div class="contact-section">
+    <h2>Contact Us</h2>
+    <p>
+        Have questions or want to place an order? We’d love to hear from you!  
+    </p>
+    <div class="contact-info">
+        <p><strong>📍 Address:</strong> Zone 2, Candau-ay, Dumaguete City</p>
+        <p><strong>📞 Phone:</strong>  +63 912 345 6789</p>
+        <p><strong>✉️ Email:</strong> info@anitasfreshdelights.com</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}New Product{% endblock %}
+
+{% block body %}
+
+    <h1 class="page-title">Add New Product</h1>
+
+    <div class="form-container">
+        {{ include('products/_form.html.twig') }}
+
+        <div class="form-actions">
+            <a href="{{ path('app_products_index') }}" class="btn btn-secondary">⬅ Back to list</a>
+        </div>
+    </div>
+
+<style>
+.page-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: "Gill Sans MT", sans-serif;
+}
+
+/* Container */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fffbea;
+    border: 2px solid #f0c040;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Inputs */
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="file"],
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #f0c040;
+    border-radius: 6px;
+    font-size: 15px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    border-color: #e67e22;
+    box-shadow: 0 0 6px rgba(230, 126, 34, 0.6);
+    outline: none;
+}
+
+/* Buttons */
+.form-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-secondary {
+    background: #444;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #222;
+}
+
+/* Submit button from the included form */
+button[type="submit"],
+input[type="submit"] {
+    background: #f0c040;
+    color: #333;
+    border: none;
+}
+
+
+/* Error messages */
+.form-error-message {
+    color: #e74c3c; /* red */
+    font-size: 14px;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Highlight invalid inputs */
+.form-container input.is-invalid,
+.form-container textarea.is-invalid,
+.form-container select.is-invalid {
+    border-color: #e74c3c;
+    box-shadow: 0 0 6px rgba(231, 76, 60, 0.6);
+}
+
+{% endblock %}

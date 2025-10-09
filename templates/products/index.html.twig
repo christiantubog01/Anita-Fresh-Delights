@@ -1,0 +1,158 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Products index{% endblock %}
+
+{% block body %}
+<h1 class="page-title">Products</h1>
+
+<div class="table-wrapper">
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.ProductName }}</td>
+                <td>{{ product.Description }}</td>
+                <td>₱{{ product.Price }}</td>
+                <td>
+                    {% if product.image %}
+                        <img src="{{ asset('products/' ~ product.image) }}" alt="{{ product.ProductName }}" class="product-thumb">
+
+                    {% else %}
+                        <span class="no-image">No image</span>
+                    {% endif %}
+                </td>
+                <td>{{ product.category ? product.category.name : 'No category' }}</td> <!-- Display product.category.name for name or product.category.id for id -->
+                <td>
+                    <a href="{{ path('app_products_show', {'id': product.id}) }}" class="btn btn-info">👁 Show</a>
+                    <a href="{{ path('app_products_edit', {'id': product.id}) }}" class="btn btn-warning">✏ Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6" class="no-records">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="create-btn">
+    <a href="{{ path('app_products_new') }}" class="btn btn-success">➕ Create new</a>
+</div>
+
+<!-- CSS -->
+<style>
+.page-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Gill Sans MT", sans-serif;
+}
+
+.table-wrapper {
+    max-width: 1500px;
+    margin: auto;
+    overflow-x: auto;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fffbea;
+    border: 2px solid #f0c040;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.product-table th {
+    background: #f0c040;
+    color: #333;
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.product-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.product-table tr:hover {
+    background: #fff4cc;
+}
+
+.product-thumb {
+    max-width: 60px;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.no-image {
+    font-size: 13px;
+    color: #888;
+}
+
+.no-records {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    padding: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 2px;
+    transition: 0.3s;
+}
+
+.btn-info {
+    background: #3498db;
+    color: white;
+}
+
+.btn-info:hover {
+    background: #217dbb;
+}
+
+.btn-warning {
+    background: #f0c040;
+    color: #333;
+}
+
+.btn-warning:hover {
+    background: #d8a700;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #1e7e34;
+}
+
+.create-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+</style>
+{% endblock %}

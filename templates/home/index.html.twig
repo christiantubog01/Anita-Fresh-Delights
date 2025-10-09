@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #fafafa;
+    }
+
+    /* Banner Section */
+    .banner {
+        background-image: url('/images/filipino-food-banner.jpg'); /* replace with your actual image path */
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        position: relative;
+    }
+
+    .banner::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4); /* overlay for readability */
+    }
+
+    .banner h1 {
+        font-family: "Gill Sans MT", "Gill Sans", Calibri, sans-serif;
+        font-weight: bold;
+        font-size: 2.8rem;
+        z-index: 1;
+        margin: 0;
+    }
+
+    /* Content Section */
+    .example-wrapper {
+        margin: 2em auto;
+        max-width: 900px;
+        width: 95%;
+        padding: 1.5em;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .example-wrapper h2 {
+        color: #d35400;
+        margin-bottom: 0.5em;
+    }
+
+    .example-wrapper ul {
+        list-style-type: disc;
+        padding-left: 1.5em;
+    }
+
+    .example-wrapper li {
+        margin: 0.5em 0;
+    }
+
+
+/*Services*/
+
+ .services {
+    text-align: center;
+    margin: 50px 0;
+}
+.services h3,h2 {
+    font-family: "Gill Sans MT", "Gill Sans", "Gill Sans MT Bold", sans-serif;
+    font-weight: bold;
+
+}
+.services p{
+    font-family: "Calibri", sans-serif;
+font-weight: normal;
+}
+
+.services-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.service-box {
+    flex: 1 1 250px;
+    max-width: 300px;
+    padding: 20px;
+    border: 2px solid #f0c040;
+    border-radius: 10px;
+    background: #fffbea;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+}   
+</style>
+
+<!-- Banner -->
+<div class="banner">
+    <h1 class="welcome-heading">WELCOME TO ANITA'S FRESH DELIGHTS!</h1>
+</div>
+
+<!-- Content -->
+<div class="example-wrapper">
+    <h2>WHY CHOOSE US?</h2>
+    <ul>
+        <li>Authentic and fresh Filipino food, made daily.</li>
+        <li>Traditional flavors with a modern twist.</li>
+        <li>Perfect for families, gatherings, and celebrations.</li>
+    </ul>
+</div>
+
+
+<!-- Services -->
+<div class="services">
+    <h2>SERVICES WE PROVIDE</h2>
+    <div class="services-container">
+        <div class="service-box">
+            <h3>FOODS</h3>
+            <p>Delicious Filipino dishes cooked fresh every day.</p>
+        </div>
+        <div class="service-box">
+            <h3>DRINKS</h3>
+            <p>Refreshing beverages to pair with your meals.</p>
+        </div>
+        <div class="service-box">
+            <h3>DELIVERY</h3>
+            <p>Fast and reliable delivery right to your doorstep.</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

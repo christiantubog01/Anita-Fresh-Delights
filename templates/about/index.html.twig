@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About{% endblock %}
+{% block stylesheets %}
+    <style>
+        p {
+            color: black;
+        }
+    .about-section {
+        background: #f9f9f9;
+        border-radius: 8px;
+        padding: 32px 24px;
+        max-width: 700px;
+        margin: 40px auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        text-align: center;
+        
+    }
+    .about-section h2 {
+        color: #2c3e50;
+        margin-bottom: 16px;
+    }
+    .about-section p {
+        color: #444;
+        font-size: 1.15em;
+        line-height: 1.7;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="about-section">
+    <h2>About Us</h2>
+    <p>
+        Welcome to Anita’s Fresh Delights where every bite feels like home.<br>
+
+We believe that food should be fresh, flavorful, and made with care. From our signature lumpia and siomai to our special food bundles, each dish is crafted with the freshest ingredients and a passion for serving our community.
+    </p>
+</div>
+<div class="about-section">
+    <h2>Mission</h2>
+    <p>
+        To serve fresh, delicious, and affordable Filipino favorites like lumpia and siomai, made with care and quality ingredients, bringing comfort and delight to every bite.
+    </p>
+    <h2>Vision</h2>
+    <p>
+        To be a trusted household name in fresh Filipino comfort food, known for authentic flavors, warm service, and a commitment to making every meal a delightful experience, from local streets to every Filipino table.
+    </p>
+</div>
+{% endblock %}

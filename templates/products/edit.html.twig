@@ -1,0 +1,98 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Edit Products{% endblock %}
+
+{% block body %}
+ <h1 class="page-title">Edit Product</h1>
+
+<div class="form-container">
+    {{ include('products/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <div class="form-actions">
+        <a href="{{ path('app_products_index') }}" class="btn btn-secondary">⬅ Back to list</a>
+        {{ include('products/_delete_form.html.twig') }}
+    </div>
+</div>
+
+<!-- CSS -->
+<style>
+.page-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: "Gill Sans MT", sans-serif;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    background: #fffbea;
+    border: 2px solid #f0c040;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-secondary {
+    background: #444;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #222;
+}
+
+.btn-danger {
+    background: #e63946;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="file"],
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #f0c040;   
+    border-radius: 6px;
+    font-size: 15px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    border-color: #e67e22;       
+    box-shadow: 0 0 6px rgba(230, 126, 34, 0.6);
+    outline: none;
+}
+</style>
+
+{% endblock %}
