@@ -1,15 +1,15 @@
 {% extends 'dashboard.html.twig' %}
 
-{% block title %}New Category{% endblock %}
+{% block title %}New Product{% endblock %}
 
 {% block body %}
 <div class="form-container">
-    <h1 class="page-title">Create New Category</h1>
+    <h1 class="page-title">Create New Product</h1>
 
-    {{ include('category/_form.html.twig') }}
+    {{ include('products/_form.html.twig', {'button_label': 'Create'}) }}
 
     <div class="form-actions">
-        <a href="{{ path('app_category_index') }}" class="btn btn-secondary">⬅ Back to list</a>
+        <a href="{{ path('app_products_index') }}" class="btn btn-secondary">⬅ Back to list</a>
     </div>
 </div>
 
@@ -48,13 +48,13 @@ body {
 .form-container textarea,
 .form-container select,
 .form-container input[type="number"],
-.form-container input[type="file"]  {
+.form-container input[type="file"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 6px;
     font-size: 15px;
-    background: #e8e8e8; /* light gray by default */
+    background: #e8e8e8;
     color: #000;
     transition: all 0.3s ease;
 }
