@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All Products{% endblock %}
+
+{% block body %}
+<style>
+body {
+    font-family: "Gill Sans MT", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px;
+}
+
+.product-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    color: #000942;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.product-card p {
+    margin: 4px 0;
+    color: #333;
+}
+
+.price {
+    color: #00ad23;
+    font-weight: bold;
+    font-size: 16px;
+}
+</style>
+<h1 style="text-align:center; margin-top:30px;">All Products</h1>
+<div class="products-container">
+    {% for product in products %}
+        <div class="product-card">
+            {% if product.image %}
+                <img src="{{ asset('products/' ~ product.image) }}" alt="{{ product.ProductName }}">
+            {% else %}
+                <img src="{{ asset('images/no_image.png') }}" alt="No image">
+            {% endif %}
+            <h3>{{ product.ProductName }}</h3>
+            <p>{{ product.category ? product.category.name : 'Uncategorized' }}</p>
+            <p class="price">₱{{ product.Price }}</p>
+        </div>
+    {% else %}
+        <p style="color:white;">No products available.</p>
+    {% endfor %}
+</div>
+{% endblock %}

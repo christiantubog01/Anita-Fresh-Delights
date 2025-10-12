@@ -2,17 +2,24 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
+use App\Repository\ProductsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class ReportsController extends AbstractController
+#[Route('/dashboard/reports')]
+class ReportsController extends AbstractController
 {
-    #[Route('/dashboard/reports', name: 'app_reports')]
-    public function index(): Response
+    #[Route('/', name: 'app_reports_index')]
+    public function index(CategoryRepository $categoryRepository, ProductsRepository $productsRepository): Response
     {
+        $totalCategories = $categoryRepository->count([]);
+        $totalProducts = $productsRepository->count([]);
+
         return $this->render('reports/index.html.twig', [
-            'controller_name' => 'ReportsController',
+            'totalCategories' => $totalCategories,
+            'totalProducts' => $totalProducts,
         ]);
     }
 }

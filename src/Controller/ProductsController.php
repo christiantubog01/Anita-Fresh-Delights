@@ -13,16 +13,31 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\String\Slugger\SluggerInterface; // Added for slugging filenames
 use Symfony\Component\HttpFoundation\File\Exception\FileException; // Added for handling file upload exceptions
 
+
 #[Route('/dashboard/products')]
 final class ProductsController extends AbstractController
 {
     #[Route(name: 'app_products_index', methods: ['GET'])]
-    public function index(ProductsRepository $productsRepository): Response
-    {
-        return $this->render('products/index.html.twig', [
-            'products' => $productsRepository->findAll(),
-        ]);
+public function index(Request $request, ProductsRepository $productsRepository): Response
+{
+    $search = $request->query->get('q');
+
+    if ($search) {
+        $products = $productsRepository->createQueryBuilder('p')
+            ->leftJoin('p.category', 'c')
+            ->addSelect('c')
+            ->where('p.ProductName LIKE :search OR p.Description LIKE :search OR c.name LIKE :search')
+            ->setParameter('search', '%' . $search . '%')
+            ->getQuery()
+            ->getResult();
+    } else {
+        $products = $productsRepository->findAll();
     }
+
+    return $this->render('products/index.html.twig', [
+        'products' => $products,
+    ]);
+}
 
     #[Route('/new', name: 'app_products_new', methods: ['GET', 'POST'])]
 public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
@@ -122,4 +137,6 @@ public function edit(Request $request, Products $product, EntityManagerInterface
 
         return $this->redirectToRoute('app_products_index', [], Response::HTTP_SEE_OTHER);
     }
+    
+   
 }

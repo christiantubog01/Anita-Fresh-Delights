@@ -3,8 +3,12 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
+
+
+<!-- Banner -->
+
 <style>
-    body {
+ body {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: #fafafa;
@@ -23,12 +27,13 @@
         text-align: center;
         position: relative;
     }
+    
 
     .banner::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: rgba(0, 0, 0, 0.4); /* overlay for readability */
+        background: rgba(0, 0, 0, 0.4); 
     }
 
     .banner h1 {
@@ -105,7 +110,6 @@ font-weight: normal;
 }   
 </style>
 
-<!-- Banner -->
 <div class="banner">
     <h1 class="welcome-heading">WELCOME TO ANITA'S FRESH DELIGHTS!</h1>
 </div>

@@ -1,67 +1,80 @@
 {% extends 'dashboard.html.twig' %}
 
-{% block title %}New Product{% endblock %}
+{% block title %}New Category{% endblock %}
 
 {% block body %}
+<div class="form-container">
+    <h1 class="page-title">Create New Category</h1>
 
-    <h1 class="page-title">Add New Product</h1>
+    {{ include('category/_form.html.twig') }}
 
-    <div class="form-container">
-        {{ include('products/_form.html.twig') }}
-
-        <div class="form-actions">
-            <a href="{{ path('app_products_index') }}" class="btn btn-secondary">⬅ Back to list</a>
-        </div>
+    <div class="form-actions">
+        <a href="{{ path('app_category_index') }}" class="btn btn-secondary">⬅ Back to list</a>
     </div>
+</div>
 
 <style>
+/* Background */
+body {
+    background: linear-gradient(to bottom, #000942ff, #0080ffff);
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: "Gill Sans MT", sans-serif;
+}
+
+/* Title */
 .page-title {
     text-align: center;
+    color: #ffffff;
     margin-bottom: 25px;
-    font-family: "Gill Sans MT", sans-serif;
+    font-size: 26px;
 }
 
 /* Container */
 .form-container {
     max-width: 600px;
-    margin: 0 auto;
-    background: #fffbea;
-    border: 2px solid #f0c040;
+    margin: 60px auto;
+    background: #000000ff;
+    border: 2px solid #000000ff;
     border-radius: 10px;
     padding: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: #fff;
 }
 
-/* Inputs */
+/* Form Inputs */
 .form-container input[type="text"],
-.form-container input[type="number"],
-.form-container input[type="file"],
 .form-container textarea,
-.form-container select {
+.form-container select,
+.form-container input[type="number"],
+.form-container input[type="file"]  {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 2px solid #f0c040;
     border-radius: 6px;
     font-size: 15px;
-    background: #fff;
+    background: #e8e8e8; /* light gray by default */
+    color: #000;
     transition: all 0.3s ease;
+}
+
+/* Specifically make the Price input white */
+input[name*="Price"], 
+input[name*="price"] {
+    background: #ffffff !important;
+    color: #000;
 }
 
 .form-container input:focus,
 .form-container textarea:focus,
 .form-container select:focus {
-    border-color: #e67e22;
-    box-shadow: 0 0 6px rgba(230, 126, 34, 0.6);
+    border-color: #00ad23ff;
+    box-shadow: 0 0 8px rgba(0, 173, 35, 0.6);
     outline: none;
 }
 
 /* Buttons */
-.form-actions {
-    margin-top: 20px;
-    text-align: center;
-}
-
 .btn {
     display: inline-block;
     padding: 10px 16px;
@@ -73,39 +86,36 @@
     transition: 0.3s;
 }
 
-.btn-secondary {
-    background: #444;
-    color: #fff;
-}
-
-.btn-secondary:hover {
-    background: #222;
-}
-
-/* Submit button from the included form */
-button[type="submit"],
-input[type="submit"] {
-    background: #f0c040;
-    color: #333;
+/* Green Create Button */
+button.btn.btn-primary,
+input[type="submit"].btn-primary {
+    background: #00ad23ff;
+    color: #ffffff;
     border: none;
 }
 
-
-/* Error messages */
-.form-error-message {
-    color: #e74c3c; /* red */
-    font-size: 14px;
-    margin-top: -8px;
-    margin-bottom: 10px;
-    font-weight: bold;
+button.btn.btn-primary:hover,
+input[type="submit"].btn-primary:hover {
+    background: #00d32fff;
+    box-shadow: 0 0 8px rgba(0, 173, 35, 0.7);
 }
 
-/* Highlight invalid inputs */
-.form-container input.is-invalid,
-.form-container textarea.is-invalid,
-.form-container select.is-invalid {
-    border-color: #e74c3c;
-    box-shadow: 0 0 6px rgba(231, 76, 60, 0.6);
+/* Gray Back Button */
+.btn-secondary {
+    background: #444444ff;
+    color: #ffffff;
 }
 
+.btn-secondary:hover {
+    background: #6d6d6dff;
+}
+
+/* Form Actions Layout */
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+</style>
 {% endblock %}

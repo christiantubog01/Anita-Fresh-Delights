@@ -3,7 +3,6 @@
 {% block title %}Products{% endblock %}
 
 {% block body %}
-  <h1 class="product-title">Product Details</h1>
 
 <div class="product-card">
     <div class="product-image">
@@ -36,6 +35,9 @@
 
 <!-- CSS -->
 <style>
+body {
+    background: linear-gradient(to bottom, #000942ff, #0080ffff);
+}
 .product-title {
     text-align: center;
     margin-bottom: 30px;
@@ -47,8 +49,8 @@
     flex-wrap: wrap;
     max-width: 800px;
     margin: auto;
-    background: #fffbea;
-    border: 2px solid #f0c040;
+    background: #000000ff;
+    border: 2px solid #000000ff;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -65,6 +67,7 @@
     max-width: 100%;
     border-radius: 8px;
     object-fit: cover;
+    border: 2px solid #000000ff;
 }
 
 .product-info {
@@ -75,18 +78,18 @@
 .product-info h2 {
     margin-top: 0;
     font-size: 28px;
-    color: #333;
+    color: #ffffffff;
 }
 
 .description {
     font-size: 16px;
     margin: 15px 0;
-    color: #555;
+    color: #ffffffff;
 }
 
 .price {
     font-size: 22px;
-    color: #e63946;
+    color: #fff200ff;
     font-weight: bold;
     margin-bottom: 15px;
 }
@@ -94,7 +97,7 @@
 .product-meta {
     margin-bottom: 20px;
     font-size: 14px;
-    color: #666;
+    color: #ffffffff;
 }
 
 .product-actions {
@@ -113,22 +116,22 @@
 }
 
 .btn-primary {
-    background: #f0c040;
-    color: #333;
+    background: #00670cff;
+    color: #fafafaff;
     border: none;
 }
 
 .btn-primary:hover {
-    background: #e0a800;
+    background: #00ad23ff;
 }
 
 .btn-secondary {
-    background: #444;
+    background: #444444ff;
     color: #fff;
 }
 
 .btn-secondary:hover {
-    background: #222;
+    background: #797979ff;
 }
 </style>
 {% endblock %}

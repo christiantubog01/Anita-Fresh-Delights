@@ -1,4 +1,17 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+     <style>
+  #updt {
+    background: #006003ff;
+    color: #fafafaff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#updt:hover {
+    background: rgba(0, 206, 34, 1);
+}  
+    </style>
+    <button class="btn" id="updt">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

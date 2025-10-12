@@ -11,49 +11,71 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+
     </head>
-     <style>
-                body {
-                    background-color: white;
-                    font-family: Calibri, 'Trebuchet MS', sans-serif;
-                    font-size: 16px;
-                }
-                nav {
-                    background-color: #95b808 ;
-                    padding: 0.5em 0;
-                    font-size: 24px;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-                }
-                nav ul {
-                    list-style: none;
-                    margin: 0;
-                    padding: 0;
-                    display: flex;
-                    gap: 2em;
-                    justify-content: center;
-                }
-                nav li {
-                    display: inline;
-                }
-                nav a {
-                    color: #fff;
-                    text-decoration: none;
-                    font-family: 'MT Gill Sans Bold', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                    font-weight: bold;
-                    font-size: 1.1em;
-                    padding: 0.5em 1em;
-                    transition: background 0.2s;
-                    border-radius: 4px;
-                }
-                nav a:hover {
-                    background: #444;
-                }
+<style>
+body {
+    background-color: white;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+}
 
+/* NAVIGATION BAR */
+nav {
+    background-color: #95b808;
+    padding: 0.5em 0;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
 
-<!--Footer -->         
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+
+nav li {
+    display: inline;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'MT Gill Sans Bold', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 0.5em 1em;
+    transition: background 0.2s;
+    border-radius: 4px;
+}
+
+nav a:hover { 
+    text-decoration: none;
+    background: #444;
+}
+
+/* NAV LOGO */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* keep items grouped left */
+  gap: 3em;
+  padding-left: 2em;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+/* FOOTER */
 .footer {
-    background: #333;
-    color: #fff;
+    background: #d5d5d5;
+    color: #000000;
     padding: 40px 20px 20px;
     font-family: "Calibri", sans-serif;
 }
@@ -71,31 +93,9 @@
     flex: 1 1 300px;
 }
 
-.footer-section h3, 
+.footer-section h3,
 .footer-section h4 {
-    color: #.footer {
-    background: #333;
-    color: #fff;
-    padding: 40px 20px 20px;
-    font-family: "Calibri", sans-serif;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.footer-section {
-    flex: 1 1 300px;
-}
-
-.footer-section h3, 
-.footer-section h4 {
-    color: #f0c040;
+    color: #000000;
     margin-bottom: 15px;
 }
 
@@ -105,37 +105,26 @@
     border-top: 1px solid #555;
     padding-top: 15px;
     font-size: 14px;
-    color: #bbb;
-};
-    margin-bottom: 15px;
+    color: #000000;
 }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    border-top: 1px solid #555;
-    padding-top: 15px;
-    font-size: 14px;
-    color: #bbb;
-}
-
-            </style>
+</style>   
     <body>
-        <nav>
-            <ul>
+  <nav>
+    <div class="nav-container">
+        <div class="logo">
+                <img src="/images/Anita's_Fresh_Delights.png" alt="Logo">
+        </div>
+        <ul>
             <li><a href="/home">HOME</a></li>
-            <li><a href="">PRODUCTS</a></li>
+            <li><a href="/all_products">PRODUCTS</a></li>
             <li><a href="/contacts">CONTACTS</a></li>
             <li><a href="/about">ABOUT</a></li>
-            </ul>
-        </nav>
+        </ul>
+    </div>
+</nav>
         {% block body %}
-        
-
-
-
-
-
+<!-- ENTERY -->
         {% endblock %}
 
 <!-- Footer -->

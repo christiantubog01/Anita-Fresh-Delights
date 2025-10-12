@@ -3,9 +3,10 @@
 {% block title %}Edit Products{% endblock %}
 
 {% block body %}
- <h1 class="page-title">Edit Product</h1>
 
 <div class="form-container">
+    <h1 class="page-title">Edit Product</h1>
+
     {{ include('products/_form.html.twig', {'button_label': 'Update'}) }}
 
     <div class="form-actions">
@@ -16,27 +17,58 @@
 
 <!-- CSS -->
 <style>
-.page-title {
-    text-align: center;
-    margin-bottom: 25px;
+/* Background */
+body {
+    background: linear-gradient(to bottom, #000942ff, #0080ffff);
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
     font-family: "Gill Sans MT", sans-serif;
 }
 
-.form-container {
-    max-width: 600px;
-    margin: auto;
-    background: #fffbea;
-    border: 2px solid #f0c040;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* Title */
+.page-title {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-size: 26px;
 }
 
-.form-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Container */
+.form-container {
+    max-width: 600px;
+    margin: 60px auto;
+    background: #000000ff;
+    border: 2px solid #000000ff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+/* Form Inputs */
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="file"],
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+
+    border-radius: 6px;
+    font-size: 15px;
+    background: #ffffff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    border-color: #00ad23ff;
+    box-shadow: 0 0 8px rgba(0, 173, 35, 0.6);
+    outline: none;
 }
 
 /* Buttons */
@@ -52,12 +84,12 @@
 }
 
 .btn-secondary {
-    background: #444;
-    color: #fff;
+    background: #444444ff;
+    color: #ffffff;
 }
 
 .btn-secondary:hover {
-    background: #222;
+    background: #6d6d6dff;
 }
 
 .btn-danger {
@@ -70,28 +102,12 @@
     background: #c82333;
 }
 
-.form-container input[type="text"],
-.form-container input[type="number"],
-.form-container input[type="file"],
-.form-container textarea,
-.form-container select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 2px solid #f0c040;   
-    border-radius: 6px;
-    font-size: 15px;
-    background: #fff;
-    transition: all 0.3s ease;
-}
-
-
-.form-container input:focus,
-.form-container textarea:focus,
-.form-container select:focus {
-    border-color: #e67e22;       
-    box-shadow: 0 0 6px rgba(230, 126, 34, 0.6);
-    outline: none;
+/* Form Actions */
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>
 

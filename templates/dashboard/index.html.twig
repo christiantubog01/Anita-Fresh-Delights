@@ -3,8 +3,97 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
- <div class="content">
-    <h1>Welcome to Dashboard</h1>
-    <p>Select an option from the sidebar.</p>
+<style>
+body {
+ background: linear-gradient(to bottom, #000942ff, #0080ffff);
+
+}
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    color: #fff;
+    font-family: 'Trebuchet MS', Calibri, sans-serif;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    margin: 2em;
+    animation: fadeIn 1.2s ease-in-out;
+    overflow: hidden;
+    
+}
+
+.content::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('/images/filipino-food-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(50%);  /* darkens image; 100% = normal */
+    z-index: -1;               /* behind content */
+    border-radius: 12px;
+}
+
+  
+  @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+  }
+
+  .content h1 {
+      font-size: 3em;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255,255,255,0.6);
+      margin-bottom: 0.5em;
+  }
+
+  .content p {
+      font-size: 1.3em;
+      margin-bottom: 2em;
+      color: #f9f9f9;
+  }
+
+  .dashboard-buttons {
+      display: flex;
+      gap: 1.5em;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .dashboard-buttons a {
+      background-color: #fff;
+      color: #4b4b4b;
+      text-decoration: none;
+      padding: 0.8em 1.6em;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .dashboard-buttons a:hover {
+      background-color: #4b4b4b;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  }
+
+</style>
+
+<div class="content">
+  <h1>🌿 Welcome to Your Dashboard!</h1>
+  <p>We’re glad to see you again.</p>
+
+  <div class="dashboard-buttons">
+      <a href="/dashboard/products">Manage Products</a>
+      <a href="/dashboard/category">Manage Categories</a>
+      <a href="/dashboard/reports">View Reports</a>
   </div>
+</div>
 {% endblock %}

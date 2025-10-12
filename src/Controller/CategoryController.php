@@ -15,10 +15,24 @@ use Symfony\Component\Routing\Attribute\Route;
 final class CategoryController extends AbstractController
 {
     #[Route(name: 'app_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository, Request $request): Response
     {
+        // 🔍 Handle search query
+        $query = $request->query->get('q', '');
+        
+        if ($query) {
+            // Filter categories by name
+            $categories = $categoryRepository->createQueryBuilder('c')
+                ->where('c.name LIKE :query')
+                ->setParameter('query', '%' . $query . '%')
+                ->getQuery()
+                ->getResult();
+        } else {
+            $categories = $categoryRepository->findAll();
+        }
+
         return $this->render('category/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
+            'categories' => $categories,
         ]);
     }
 
