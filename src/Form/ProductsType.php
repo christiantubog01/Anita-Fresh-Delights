@@ -51,7 +51,7 @@ class ProductsType extends AbstractType
                 'choice_label' => 'name', // the property shown in the dropdown (change it to id of you want to show id)
                 'required' => true,
                 'placeholder' => 'Select a category',
-])
+]) 
         ;
     }
 
