@@ -43,9 +43,9 @@ public function index(Request $request, ProductsRepository $productsRepository):
 public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
 {
     $product = new Products();
-    $form = $this->createForm(ProductsType::class, $product);
+    $form = $this->createForm(ProductsType::class, $product, ['is_create' => true]); //remove ", ['is_create' => true]);" to disable image requirement on edit
     $form->handleRequest($request);
-//Image Input
+//Image Input Below
     if ($form->isSubmitted() && $form->isValid()) {
         $imageFile = $form->get('image')->getData();
 
@@ -69,10 +69,10 @@ public function new(Request $request, EntityManagerInterface $entityManager, Slu
 
         $entityManager->persist($product);
         $entityManager->flush();
-//Image Input
+
         return $this->redirectToRoute('app_products_index');
     }
-
+//Image Input Above
     return $this->render('products/new.html.twig', [
         'product' => $product,
         'form' => $form->createView(),

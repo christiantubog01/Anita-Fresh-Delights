@@ -33,7 +33,7 @@ class ProductsType extends AbstractType
             ->add('image', FileType::class, [
                     'label' => 'Product Image (JPEG or PNG file)',
                     'mapped' => false, // not directly linked to entity field
-                    'required' => false,
+                    'required' => $options['is_create'], // required only on create, change it to false or true to change back
                     'constraints' => [
                 new File([
                     'maxSize' => '2M',
@@ -42,7 +42,7 @@ class ProductsType extends AbstractType
                     'image/png',
                     ],
                     'mimeTypesMessage' => 'Please upload a valid JPEG or PNG image',
-                    ])
+                ]),
                     ],
                     ])
 
@@ -59,6 +59,7 @@ class ProductsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Products::class,
+            'is_create' => false, // default is edit mode remove this to go back
         ]);
     }
 }
