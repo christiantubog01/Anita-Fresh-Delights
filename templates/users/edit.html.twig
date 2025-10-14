@@ -3,11 +3,124 @@
 {% block title %}Edit Users{% endblock %}
 
 {% block body %}
-    <h1>Edit Users</h1>
+<div class="form-container">
+    <h1 class="page-title">Edit User</h1>
 
     {{ include('users/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_users_index') }}">back to list</a>
+    <div class="form-actions">
+        <a href="{{ path('app_users_index') }}" class="btn btn-secondary">⬅ Back to list</a>
+        {{ include('users/_delete_form.html.twig') }}
+    </div>
+</div>
 
-    {{ include('users/_delete_form.html.twig') }}
+<style>
+/* Background */
+body {
+    background: linear-gradient(to bottom, #000942ff, #0080ffff);
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: "Gill Sans MT", sans-serif;
+}
+
+/* Title */
+.page-title {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+/* Container */
+.form-container {
+    max-width: 600px;
+    margin: 60px auto;
+    background: #000000ff;
+    border: 2px solid #000000ff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+/* Form Inputs */
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="email"],
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-size: 15px;
+    background: #ffffff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    border-color: #00ad23ff;
+    box-shadow: 0 0 8px rgba(0, 173, 35, 0.6);
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Green Update Button */
+button.btn.btn-primary,
+input[type="submit"].btn-primary {
+    background: #00ad23ff;
+    color: #ffffff;
+    border: none;
+}
+
+button.btn.btn-primary:hover,
+input[type="submit"].btn-primary:hover {
+    background: #00d32fff;
+    box-shadow: 0 0 8px rgba(0, 173, 35, 0.7);
+}
+
+/* Gray Back Button */
+.btn-secondary {
+    background: #444444ff;
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background: #6d6d6dff;
+}
+
+/* Red Delete Button */
+.btn-danger {
+    background: #e63946;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+/* Form Actions Layout */
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+</style>
 {% endblock %}

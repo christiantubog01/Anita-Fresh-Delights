@@ -15,12 +15,27 @@ use Symfony\Component\Routing\Attribute\Route;
 final class UsersController extends AbstractController
 {
     #[Route(name: 'app_users_index', methods: ['GET'])]
-    public function index(UsersRepository $usersRepository): Response
-    {
-        return $this->render('users/index.html.twig', [
-            'users' => $usersRepository->findAll(),
-        ]);
+    public function index(UsersRepository $usersRepository, Request $request): Response
+{
+    // 🔍 Handle search query
+    $query = $request->query->get('q', '');
+
+    if ($query) {
+        // Filter users by username (or you could choose another single field)
+        $users = $usersRepository->createQueryBuilder('u')
+            ->where('u.username LIKE :query')
+            ->setParameter('query', '%' . $query . '%')
+            ->getQuery()
+            ->getResult();
+    } else {
+        // No query → return all users
+        $users = $usersRepository->findAll();
     }
+
+    return $this->render('users/index.html.twig', [
+        'users' => $users,
+    ]);
+}
 
     #[Route('/new', name: 'app_users_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
