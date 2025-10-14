@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
 <!-- Banner -->
 
 <style>
@@ -16,6 +15,7 @@
 
     /* Banner Section */
     .banner {
+        user-select: none;
         background-image: url('/images/filipino-food-banner.jpg'); /* replace with your actual image path */
         background-size: cover;
         background-position: center;
@@ -28,12 +28,17 @@
         position: relative;
     }
     
-
     .banner::after {
         content: "";
         position: absolute;
         inset: 0;
         background: rgba(0, 0, 0, 0.4); 
+    }
+
+    .banner-text {
+        position: relative;
+        z-index: 1; /* make sure text is above the overlay */
+        text-align: center;
     }
 
     .banner h1 {
@@ -42,6 +47,14 @@
         font-size: 2.8rem;
         z-index: 1;
         margin: 0;
+    }
+
+    .banner-slogan {
+        font-family: 'Calibri', sans-serif;
+        font-size: 16px;
+        font-style: italic;
+        margin-top: 0.5em;
+        color: white;
     }
 
     /* Content Section */
@@ -69,49 +82,51 @@
         margin: 0.5em 0;
     }
 
+    /* Services */
+    .services {
+        text-align: center;
+        margin: 50px 0;
+    }
 
-/*Services*/
+    .services h3, h2 {
+        font-family: "Gill Sans MT", "Gill Sans", "Gill Sans MT Bold", sans-serif;
+        font-weight: bold;
+    }
 
- .services {
-    text-align: center;
-    margin: 50px 0;
-}
-.services h3,h2 {
-    font-family: "Gill Sans MT", "Gill Sans", "Gill Sans MT Bold", sans-serif;
-    font-weight: bold;
+    .services p {
+        font-family: "Calibri", sans-serif;
+        font-weight: normal;
+    }
 
-}
-.services p{
-    font-family: "Calibri", sans-serif;
-font-weight: normal;
-}
+    .services-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
 
-.services-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
-}
+    .service-box {
+        flex: 1 1 250px;
+        max-width: 300px;
+        padding: 20px;
+        border: 2px solid #f0c040;
+        border-radius: 10px;
+        background: #fffbea;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
 
-.service-box {
-    flex: 1 1 250px;
-    max-width: 300px;
-    padding: 20px;
-    border: 2px solid #f0c040;
-    border-radius: 10px;
-    background: #fffbea;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.service-box:hover {
-    transform: translateY(-5px);
-}   
+    .service-box:hover {
+        transform: translateY(-5px);
+    }   
 </style>
 
 <div class="banner">
-    <h1 class="welcome-heading">WELCOME TO ANITA'S FRESH DELIGHTS!</h1>
+    <div class="banner-text">
+        <h1 class="welcome-heading">WELCOME TO ANITA'S FRESH DELIGHTS!</h1>
+        <p class="banner-slogan">Freshly wrapped, lovingly served.</p>
+    </div>
 </div>
 
 <!-- Content -->
@@ -123,7 +138,6 @@ font-weight: normal;
         <li>Perfect for families, gatherings, and celebrations.</li>
     </ul>
 </div>
-
 
 <!-- Services -->
 <div class="services">
@@ -143,6 +157,5 @@ font-weight: normal;
         </div>
     </div>
 </div>
-
 
 {% endblock %}
